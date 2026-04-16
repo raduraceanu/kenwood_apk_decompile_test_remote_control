@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:title="@string/alow_connection_with_headunit"
+        android:selectable="true"
+        android:key="@string/alow_connection_with_headunit_key"
+        android:defaultValue="true"/>
+    <Preference
+        android:title="@string/manual_screen_calibration"
+        android:key="@string/manual_screen_calibration_key"/>
+</PreferenceScreen>

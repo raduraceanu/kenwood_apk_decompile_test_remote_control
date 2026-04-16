@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:layout_gravity="center_vertical"
+    android:background="@drawable/button_whitelist_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp">
+        <ImageView
+            android:id="@+id/imgViewAppIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/icon_launcher"/>
+        <TextView
+            android:textSize="@dimen/activity_whitelist_button_font_size"
+            android:textColor="@drawable/button_text_color"
+            android:id="@+id/txtViewAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/common_desc"/>
+    </LinearLayout>
+</FrameLayout>

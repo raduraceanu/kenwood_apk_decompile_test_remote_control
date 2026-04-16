@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionCode="2031"
+    android:versionName="2.0.31"
+    package="com.jvckenwood.HID_ThinClient.KWD"
+    platformBuildVersionCode="23"
+    platformBuildVersionName="6.0-2438415">
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="19"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <application
+        android:theme="@style/AppTheme"
+        android:label="@string/app_name"
+        android:icon="@drawable/icon_launcher"
+        android:name="com.jvckenwood.carconnectcontrol.AppLauncherApplication"
+        android:enabled="true"
+        android:allowBackup="true">
+        <activity
+            android:theme="@style/FullscreenTheme"
+            android:name="com.jvckenwood.carconnectcontrol.SplashActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="screenSize|orientation|keyboardHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name="com.jvckenwood.carconnectcontrol.ScreenCalibrationActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor"
+            android:configChanges="screenSize|orientation|keyboardHidden"/>
+        <activity
+            android:label="@string/app_name"
+            android:name="com.jvckenwood.carconnectcontrol.ApplicationLauncherActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:label="@string/app_name"
+            android:name="com.jvckenwood.carconnectcontrol.SettingsScreenActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:theme="@style/Theme.AppCompat.Light"
+            android:label="@string/title_activity_whitelist_application_list_activity"
+            android:name="com.jvckenwood.carconnectcontrol.WhiteListApplicationListActiviry"
+            android:screenOrientation="landscape"/>
+        <service
+            android:name="com.jvckenwood.android.launcherconnectionservice.impl.ConnectionService"
+            android:permission="android.permission.BLUETOOTH"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.jvckenwood.android.launcherconnectionservice.interfaces.KWD.IApp"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.jvckenwood.ce.globalactor.GlobalActorService"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config"/>
+        </service>
+        <receiver
+            android:name="com.jvckenwood.android.launcherconnectionservice.impl.ConnectionServiceLaunchReceiver"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.bluetooth.adapter.action.STATE_CHANGED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.bluetooth.device.action.ACL_DISCONNECTED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <data android:scheme="package"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_FULLY_REMOVED"/>
+                <data android:scheme="package"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.jvckenwood.carconnectcontrol.ConnectionReciver"
+            android:permission="android.permission.BLUETOOTH"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.jvckenwood.android.launcherconnectionservice.impl.ConnectionService.HEAD_UNIT_CONNECTED"/>
+                <action android:name="com.jvckenwood.android.launcherconnectionservice.impl.ConnectionService.START_LAUNCHER"/>
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

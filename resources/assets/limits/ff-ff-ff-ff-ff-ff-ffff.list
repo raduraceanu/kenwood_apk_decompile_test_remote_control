@@ -1,0 +1,19 @@
+# KENWOOD Music Control
+1.pname = com.jvckenwood.kmc
+1.appName = KENWOOD Music Control
+1.restrictLv = 7
+
+# Waze
+2.pname = com.waze
+2.appName = Waze
+2.restrictLv = 7
+
+# TuneIn Radio
+3.pname = tunein.player
+3.appName = TuneIn Radio
+3.restrictLv = 7
+
+# TuneIn Radio Pro
+4.pname = radiotime.player
+4.appName = TuneIn Radio Pro
+4.restrictLv = 7
